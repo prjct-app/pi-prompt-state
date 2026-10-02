@@ -1,0 +1,49 @@
+{
+  "name": "@prjct.app/pi-prompt-state",
+  "version": "0.1.0",
+  "description": "Report blocked tool prompts to Herdr through Pi events; inactive outside Herdr.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-extension",
+    "herdr"
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "image": "https://raw.githubusercontent.com/prjct-app/pi-local-extensions/main/pi-prompt-state/docs/cover-v2.png"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prjct-app/pi-local-extensions.git",
+    "directory": "pi-prompt-state"
+  },
+  "bugs": {
+    "url": "https://github.com/prjct-app/pi-local-extensions/issues"
+  },
+  "homepage": "https://github.com/prjct-app/pi-local-extensions/tree/main/pi-prompt-state#readme",
+  "files": [
+    "index.ts",
+    "README.md",
+    "LICENSE",
+    "docs/cover.png",
+    "docs/cover-v2.png"
+  ],
+  "scripts": {
+    "check:package": "npm pack --dry-run --ignore-scripts",
+    "test": "node --experimental-strip-types --no-warnings --test tests/*.test.ts"
+  },
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  }
+}
