@@ -32,26 +32,22 @@
 // removing it entirely is always safe — panes fall back to plain
 // working/idle.
 //
-// The body is deliberately plain JavaScript, so plain node can load a renamed
-// copy for quick checks without a transpiler (tools/prompt-state.test.js
-// does exactly that). Keep it that way.
-
-'use strict';
+import type { ExtensionAPI } from '@earendil-works/pi-coding-agent';
 
 const FALLBACK_LABEL = 'waiting for input';
 const LABEL_MAX = 120;
 
-function labelFor(event) {
+function labelFor(event: { title?: unknown }) {
   const title = event && typeof event.title === 'string' ? event.title.trim() : '';
   if (!title) return FALLBACK_LABEL;
   return title.length <= LABEL_MAX ? title : title.slice(0, LABEL_MAX - 1) + '…';
 }
 
-export default function herdrPromptState(pi) {
+export default function herdrPromptState(pi: ExtensionAPI) {
   if (process.env.HERDR_ENV !== '1') return;
 
   // Tool calls in flight, by id: the only prompts that block the agent.
-  const running = new Set();
+  const running = new Set<string>();
 
   pi.on('tool_execution_start', (event) => {
     if (event && typeof event.toolCallId === 'string') running.add(event.toolCallId);

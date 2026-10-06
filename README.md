@@ -1,6 +1,6 @@
 # pi-prompt-state
 
-[![pi-prompt-state — for PI Agent](https://raw.githubusercontent.com/prjct-app/pi-local-extensions/main/pi-prompt-state/docs/cover-v2.png)](https://pi.dev)
+[![pi-prompt-state — for PI Agent](https://raw.githubusercontent.com/prjct-app/pi-prompt-state/main/docs/cover-v2.png)](https://pi.dev)
 
 Tell Herdr when a running Pi tool is waiting for a person to answer a terminal prompt.
 
