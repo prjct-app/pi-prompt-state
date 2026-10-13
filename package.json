@@ -1,6 +1,6 @@
 {
   "name": "@prjct.app/pi-prompt-state",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Report blocked tool prompts to Herdr through Pi events; inactive outside Herdr.",
   "type": "module",
   "license": "MIT",
@@ -36,7 +36,7 @@
   ],
   "scripts": {
     "check:package": "npm pack --dry-run --ignore-scripts",
-    "test": "node --import tsx --test --test-concurrency=1 tests/*.test.ts",
+    "test": "export PI_CODING_AGENT_DIR=\"$(mktemp -d)\" PRJCT_HOME=\"$(mktemp -d)\" && node --import tsx --test --test-concurrency=1 tests/*.test.ts",
     "check": "tsc --noEmit",
     "build:pi": "node scripts/build-pi.mjs",
     "audit:runtime": "node scripts/audit-production.mjs"

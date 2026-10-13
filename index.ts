@@ -59,17 +59,17 @@ export default function herdrPromptState(pi: ExtensionAPI) {
 
   // One emit pair per waiting span keeps the consumer's blockedCount
   // balanced even if pi ever double-fires a start.
-  let waiting = false;
+  const span = { waiting: false };
 
   pi.on('ui_prompt_start', (event) => {
-    if (waiting || running.size === 0) return;
-    waiting = true;
+    if (span.waiting || running.size === 0) return;
+    span.waiting = true;
     pi.events.emit('herdr:blocked', { active: true, label: labelFor(event) });
   });
 
   pi.on('ui_prompt_end', () => {
-    if (!waiting) return;
-    waiting = false;
+    if (!span.waiting) return;
+    span.waiting = false;
     pi.events.emit('herdr:blocked', { active: false });
   });
 };
